@@ -50,6 +50,22 @@
     .login button:hover {
       background-color: #45a049;
     }
+
+    .prediction {
+    margin-top: 20px;
+    font-size: 20px;
+    text-align: center;
+    }
+
+    .prediction p {
+    margin: 10px 0;
+    }
+
+    .prediction span {
+    font-weight: bold;
+    color: #1e90ff;
+    }
+
   </style>
 </head>
 
@@ -80,10 +96,10 @@
       <button type="submit">Predict</button>
     </form>
 
-    <br>
-    <br>
+    <div class="prediction">
+        <p>Predicted Length: <span>{{ length }}</span> cm</p>
+        <p>Predicted Weight: <span>{{ weight }}</span> g</p>
+    </div>      
   </div>
-  {{ prediction_text }}
 </body>
 </html>
-

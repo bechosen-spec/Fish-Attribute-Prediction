@@ -31,7 +31,7 @@ def predict():
     data_array = np.array(data).reshape(1, -1)  # Reshape input data to a 2D array
     length = length_model.predict(data_array)[0]
     weight = weight_model.predict(data_array)[0]
-    return render_template("home.html", prediction_text="Predicted Length: {} cm, Predicted Weight: {} g".format(length, weight))
+    return render_template("home.html", length=length, weight=weight)
 
 if __name__ == "__main__":
     app.run(debug=True)
