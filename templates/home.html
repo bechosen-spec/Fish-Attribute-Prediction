@@ -1,1 +1,89 @@
-<h1>AGRO AI PROJECT</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Fish Attribute Prediction</title>
+  <style>
+    body {
+      background-color: #f2f2f2;
+      font-family: 'Arimo', sans-serif;
+      text-align: center;
+    }
+
+    .login {
+      background-color: #ffffff;
+      padding: 20px;
+      width: 300px;
+      margin: 0 auto;
+      margin-top: 100px;
+      border-radius: 5px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .login h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+
+    .login input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+
+    .login button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .login button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login">
+    <h1>Fish Attribute Prediction</h1>
+
+    <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}" method="post">
+      <label for="temperature">Temperature (C):</label>
+      <input type="text" name="temperature" id="temperature" placeholder="24.8750" required="required" /><br>
+
+      <label for="turbidity">Turbidity (NTU):</label>
+      <input type="text" name="turbidity" id="turbidity" placeholder="100" required="required" /><br>
+
+      <label for="dissolved_oxygen">Dissolved Oxygen (g/ml):</label>
+      <input type="text" name="dissolved_oxygen" id="dissolved_oxygen" placeholder="4.505" required="required" /><br>
+
+      <label for="ph">PH:</label>
+      <input type="text" name="ph" id="ph" placeholder="8.43365" required="required" /><br>
+
+      <label for="ammonia">Ammonia (g/ml):</label>
+      <input type="text" name="ammonia" id="ammonia" placeholder="0.45842" required="required" /><br>
+
+      <label for="nitrate">Nitrate (g/ml):</label>
+      <input type="text" name="nitrate" id="nitrate" placeholder="193" required="required" /><br>
+
+      <button type="submit">Predict</button>
+    </form>
+
+    <br>
+    <br>
+  </div>
+  {{ prediction_text }}
+</body>
+</html>
+
