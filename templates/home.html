@@ -52,18 +52,18 @@
     }
 
     .prediction {
-    margin-top: 20px;
-    font-size: 20px;
-    text-align: center;
+      margin-top: 20px;
+      font-size: 20px;
+      text-align: center;
     }
 
     .prediction p {
-    margin: 10px 0;
+      margin: 10px 0;
     }
 
     .prediction span {
-    font-weight: bold;
-    color: #1e90ff;
+      font-weight: bold;
+      color: #1e90ff;
     }
 
   </style>
@@ -71,34 +71,36 @@
 
 <body>
   <div class="login">
-    <h1>Fish Attribute Prediction</h1>
+    <h1>Fish Growth Prediction</h1>
 
     <!-- Main Input For Receiving Query to our ML -->
     <form action="{{ url_for('predict')}}" method="post">
       <label for="temperature">Temperature (C):</label>
-      <input type="text" name="temperature" id="temperature" placeholder="24.8750" required="required" /><br>
+      <input type="text" name="temperature" id="temperature" value="{{ request.form.temperature }}" required="required" /><br>
 
       <label for="turbidity">Turbidity (NTU):</label>
-      <input type="text" name="turbidity" id="turbidity" placeholder="100" required="required" /><br>
+      <input type="text" name="turbidity" id="turbidity" value="{{ request.form.turbidity }}" required="required" /><br>
 
       <label for="dissolved_oxygen">Dissolved Oxygen (g/ml):</label>
-      <input type="text" name="dissolved_oxygen" id="dissolved_oxygen" placeholder="4.505" required="required" /><br>
+      <input type="text" name="dissolved_oxygen" id="dissolved_oxygen" value="{{ request.form.dissolved_oxygen }}" required="required" /><br>
 
       <label for="ph">PH:</label>
-      <input type="text" name="ph" id="ph" placeholder="8.43365" required="required" /><br>
+      <input type="text" name="ph" id="ph" value="{{ request.form.ph }}" required="required" /><br>
 
       <label for="ammonia">Ammonia (g/ml):</label>
-      <input type="text" name="ammonia" id="ammonia" placeholder="0.45842" required="required" /><br>
+      <input type="text" name="ammonia" id="ammonia" value="{{ request.form.ammonia }}" required="required" /><br>
 
       <label for="nitrate">Nitrate (g/ml):</label>
-      <input type="text" name="nitrate" id="nitrate" placeholder="193" required="required" /><br>
+      <input type="text" name="nitrate" id="nitrate" value="{{ request.form.nitrate }}" required="required" /><br>
 
       <button type="submit">Predict</button>
     </form>
 
     <div class="prediction">
+        {% if length is defined and weight is defined %}
         <p>Predicted Length: <span>{{ length }}</span> cm</p>
         <p>Predicted Weight: <span>{{ weight }}</span> g</p>
+        {% endif %}
     </div>      
   </div>
 </body>
